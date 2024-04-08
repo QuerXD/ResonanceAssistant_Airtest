@@ -9,11 +9,23 @@ import resource.function.travel_action as travel
 
 
 
-
+class Business_Plan():
+    def __init__(self):
+        self.citylist = ["修格里城", "7号自由港"]
+        self.city1buylist = ["发动机", "弹丸加速装置", "红茶", "沃德烤鸡", "高档餐具", "罐头", "沃德山泉"]
+        self.city2buylist = ["沙金", "青金石", "漆黑矿渣", "玛瑙", "铁矿石", "石英砂"]
+        self.city1buy_bargain = 0
+        self.city1sell_bargain = 0
+        self.city2buy_bargain = 0
+        self.city2sell_bargain = 0
+        self.city1book = 0
+        self.city2book = 0
 
 def usertest():
     game.init()
-    while True:
+    print("t")
+    autorun(Business_Plan())
+    while False:
 
         print("选择操作:")
         print("1：启动游戏")
@@ -68,18 +80,16 @@ def usertest():
                 
                 # 这里用预设列表了，输入太慢，
 
-                citylist = ["修格里城", "淘金乐园"]
-                city1buylist = ["发动机", "弹丸加速装置", "红茶", "沃德烤鸡", "高档餐具", "罐头", "沃德山泉"]
-                city2buylist = ["沙金", "青金石", "漆黑矿渣","玛瑙","铁矿石", "石英砂"]
 
-                autorun(citylist, city1buylist, city2buylist)
+
+                autorun(Business_Plan)
 
 
 
 
 
 
-def autorun(citylist, productlist1, productlist2):
+def autorun(Business_Plan):
     #预处理数据
     citydir = {"阿妮塔能源研究站": "a", "7号自由港": "7", "澄明数据中心": "c", "修格里城": "x", "铁盟哨站": "tie",
                "荒原站": "h", "曼德矿场": "m", "淘金乐园": "t", "阿妮塔战备工厂": "an"}
@@ -93,25 +103,24 @@ def autorun(citylist, productlist1, productlist2):
     cityname = guide.searchcity()
     guide.backmain()
 
-    # 前往1号城
-    if cityname != citydir2[citylist[0]]:
-        travel.test(citydir[citylist[0]])
-
+    # 如果不在1号城，前往1号城
+    if cityname != citydir2[Business_Plan.citylist[0]]:
+        travel.test(citydir[Business_Plan.citylist[0]])
+    #买东西
     guide.entercity()
     guide.enterexchange(0)
-    trade.buyproduct(product=productlist1)
-
-    travel.test(citydir[citylist[1]])
-
-    while True:
+    trade.buyproduct(book = Business_Plan.city1book, product = Business_Plan.city1buylist)
+    #前往2号城
+    travel.test(citydir[Business_Plan.citylist[1]])
+    while False:
         # 这里在2号城
         guide.entercity()
         guide.enterexchange(1)
-        trade.sellproduct(product=productlist1)
+        trade.sellproduct(product = Business_Plan.productlist1)
 
         guide.entercity()
         guide.enterexchange(0)
-        trade.buyproduct(product=productlist2)
+        trade.buyproduct(product = Business_Plan.productlist2)
 
         travel.test(citydir[citylist[0]])
 

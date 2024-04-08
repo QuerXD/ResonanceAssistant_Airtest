@@ -7,11 +7,12 @@ def test(type, list):
 
 
 #
-def buyproduct(book=0, product=None):
+def buyproduct(book=0, product=None, bargain = 0):
     """
     初步购买逻辑，启动界面在商品界面
     :param book: 吃多少书
     :param product: 列表，目前只支持中文商品列表，后期会改成商品代号
+    :param bargain: 议价多少次
     :return: True表示正常完成
     """
     # 检查商品列表是否为空
