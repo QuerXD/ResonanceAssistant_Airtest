@@ -11,7 +11,7 @@ import resource.function.travel_action as travel
 
 class Business_Plan():
     def __init__(self):
-        self.citylist = ["修格里城", "7号自由港"]
+        self.citylist = ["修格里城", "阿妮塔能源研究站"]
         self.city1buylist = ["发动机", "弹丸加速装置", "红茶", "沃德烤鸡", "高档餐具", "罐头", "沃德山泉"]
         self.city2buylist = ["沙金", "青金石", "漆黑矿渣", "玛瑙", "铁矿石", "石英砂"]
         self.city1buy_bargain = 0
